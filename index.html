@@ -19,14 +19,16 @@
             <h2 class="card-title">Generate a Password</h2>
             <textarea disabled class="form-control" style="margin: 0px; width: 600px; height: 160px;"></textarea>              
               <br>
-              <button type="button" class="btnGen">Generate</button>
-              <button disabled type="button" class="btnCopy">Copy to Clipboard</button>
+              <button type="button" id="btnGen"onclick= "firstClick ()">Generate</button>
+              <button disabled type="button" id="btnCopy">Copy to Clipboard</button>
           </div>
          </div>
     </section>
 
-<script>
-    
+<script>   
+    function firstClick() {
+        prompt("How long would you like your password to be?");
+    }
     
 </script>
 

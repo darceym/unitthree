@@ -20,13 +20,17 @@ section {
     color: gray;
 
 }
-.btnGen {
+#btnGen {
     font-size:large;
     color: white;
     background-color: salmon;
+    padding: 4px;
+    margin: 10px;
 }
-.btnCopy {
+#btnCopy {
     font-size: large;
     color: white;
     background-color: gainsboro;
+    padding: 4px;
+    margin: 10px;
 }
