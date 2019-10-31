@@ -19,10 +19,10 @@
         <div>
          <div class="card-body">
             <h2 class="card-title">Generate a Password</h2>
-            <textarea disabled class="form-control" style="margin: 0px; width: 600px; height: 160px;"></textarea>              
+            <textarea disabled class="form-control" id="box" style="margin: 0px; width: 600px; height: 160px;"></textarea>              
               <br>
               <div class= "button">
-              <button id= "btnGen" onclick= "firstClick ()">Generate</button>
+              <button id= "btnGen">Generate</button>
               </div>
               <div>
               <button disabled id="btnCopy">Copy to Clipboard</button>
@@ -32,50 +32,80 @@
     </section>
 
 <script>  
+var specialChar = ['!', '#', '$', '%', '&', '(', ')', '*', '+', '-', '"', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~'];
+var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var count;
+var arr = [];
 
-    var userLength = [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128];
-    // for (var i >= 8 &&i <= 128); 
-        console.log(userLength);
-     var userSpecial = [!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"];
-        console.log(userSpecial);
-    var userNumber = [0,1,2,3,4,5,6,7,8,9];
-        console.log(userNumber);
-    var userLower = ["a", "b", "c", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-        console.log(userLower);
-    var userUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-        console.log(userUpper);
-    // var userPassword = [i];
-
-    function firstClick() {
-    prompt("How long would you like your password to be? Please pick between 8 - 128 characters.");
-        
-        // for (var i = 8 && i <= 128){
-        // var userChoice = (userLength) 
-        // }    
-
-        if (userLength === true) {
-       confirm("Would you like to use special characters in your password?");
+    document.getElementById("btnGen").addEventListener("click", function() {
+        length()
+    });    
+    
+    function length() {
+    count = prompt("How long would you like your password to be? Please pick between 8 - 128 characters.");
+    if (count > 128){
+        alert("Password must be less than 128 characters, please!");
+        length()
+    }    
+    else if (count < 8){
+        alert("Password must be more than 8 characters, please!");
+        length();
+    }
+        else {
+            character ();
         }
-       else if (userLength === false)          
-       confirm("Please pick between 8 - 128 characters.");
-        
-        // var choiceSpecial = userSpecial[math.floor(math.random() * userChoice)];
-        // var choiceNumber = userNumber[math.floor(math.random()) * userNumber];
-        // var choiceLower = userLower[math.floor(char??) * userLower];
-        // var choiceUpper = userUpper[math.floor(char??) * userUpper]; 
 
     }
+    function character (){
+        if(confirm("Would you like to use special characters?")){
+            arr.push(specialChar);
+        }
+        if (confirm("Would you like to use uppercase characters?")){
+            arr.push(upperCase);
+        }
+        if(confirm("Would you like to use lowercase characters?")){
+            arr.push(lowerCase);
+        }
+        if(confirm("Would you like to use numbers?")){
+            arr.push(nums)
+        }
+        if(arr.length < 2) {
+            alert("Please select at least 2 character types!")
+            character();
+        }
+        else {
+            btnGen(arr, count);
+        }
+    }
 
-    // var userPassword = ()
-        // return(choiceSpecial + choiceNumber + choiceLower + choiceUpper(userChoice.length));   
+    function btnGen(arr, passwordLength){
+        password = ' '
+        passwordLength = parseInt(passwordLength)
+        for (var p = 0; p < passwordLength; p++){
+            var whichArr = Math.floor(Math.random() * arr.length)
+        console.log(arr, whichArr);
+        password += arr[whichArr][Math.floor(Math.random() * arr[whichArr].length)];
+        console.log(password);
+        
+        } 
+    // document.getElementsByClassName('form-control').appendchild(password);
+    // document.getElementById("box").innerHTML = appendChild(password);
+        // return(password);
+        document.getElementById('box').value = password;
+    // textBox.append(password);
 
-    // 
+    }
+        
+    function btnCopy() {
+
+    }
+ 
+
     
 
-    //  identify variables and parameters first
-    //  click button to begin
-    // store user's input - do I need a variable to do so?
-    //  
+ 
 </script>
 
 </body>
